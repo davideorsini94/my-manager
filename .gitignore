@@ -1,4 +1,34 @@
+# App data (must never be committed — contains personal/work content)
 data/
+*.local.json
+
+# Node
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# OS
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.history/
+
+# Logs & temp
 *.log
+*.tmp
+*.pid
+.cache/

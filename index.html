@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyManager</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="logo">⚡</span>
+        <span class="brand-name">MyManager</span>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-view="dashboard">
+          <span class="nav-icon">◉</span><span>Dashboard</span><kbd>g d</kbd>
+        </button>
+        <button class="nav-item" data-view="tasks">
+          <span class="nav-icon">✓</span><span>Tasks</span><kbd>g t</kbd>
+        </button>
+        <button class="nav-item" data-view="people">
+          <span class="nav-icon">◎</span><span>Persone</span><kbd>g p</kbd>
+        </button>
+        <button class="nav-item" data-view="teams">
+          <span class="nav-icon">⌘</span><span>Teams</span><kbd>g m</kbd>
+        </button>
+        <button class="nav-item" data-view="products">
+          <span class="nav-icon">▣</span><span>Prodotti</span><kbd>g r</kbd>
+        </button>
+        <button class="nav-item" data-view="notes">
+          <span class="nav-icon">≡</span><span>Notes</span><kbd>g n</kbd>
+        </button>
+        <button class="nav-item" data-view="decisions">
+          <span class="nav-icon">◆</span><span>Decisions</span><kbd>g x</kbd>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="searchBtn" class="ghost-btn" title="Cerca (Cmd+K)">
+          <span>🔍</span><span>Cerca</span><kbd>⌘K</kbd>
+        </button>
+        <button id="profileBtn" class="ghost-btn" title="Il tuo profilo">
+          <span>👤</span><span>Profilo</span>
+        </button>
+        <button id="backupsBtn" class="ghost-btn" title="Sfoglia backup su disco">
+          <span>🗂</span><span>Backup</span>
+        </button>
+        <button id="themeBtn" class="ghost-btn" title="Toggle tema">
+          <span id="themeIcon">◐</span><span>Tema</span>
+        </button>
+        <button id="exportBtn" class="ghost-btn" title="Esporta backup JSON">
+          <span>⤓</span><span>Export</span>
+        </button>
+        <button id="importBtn" class="ghost-btn" title="Importa backup JSON">
+          <span>⤒</span><span>Import</span>
+        </button>
+        <input type="file" id="importInput" accept=".json" hidden />
+        <div id="syncStatus" class="sync-status"></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div id="view"></div>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/people.js"></script>
+  <script src="js/teams.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/notes.js"></script>
+  <script src="js/decisions.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

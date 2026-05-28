@@ -201,7 +201,7 @@ const Products = {
         el('div', { class: 'card-title' }, [`Decisions (${decisions.length})`]),
         el('div', {}, decisions.slice(0, 8).map(d => el('div', { class: 'list-item', style: 'cursor:pointer;', onclick: () => { closeModal(); App.go('decisions'); Decisions.openEditor(d); } }, [
           el('span', { class: 'spacer', style: 'text-align:left;' }, [d.title]),
-          el('span', { class: 'badge' }, [d.status || 'proposed']),
+          el('span', { class: 'badge' }, [DECISION_STATUS_LABELS[d.status] || DECISION_STATUS_LABELS.proposed]),
         ]))),
       ]) : null,
 

@@ -1,4 +1,11 @@
 // Decisions log — lightweight ADR-style technical decisions.
+const DECISION_STATUS_LABELS = {
+  proposed: 'Proposta',
+  accepted: 'Accettata',
+  rejected: 'Rifiutata',
+  superseded: 'Superata',
+};
+
 const Decisions = {
   render(root) {
     root.innerHTML = '';
@@ -38,7 +45,7 @@ const Decisions = {
         ]),
         el('span', { class: 'spacer' }),
         d.productId ? el('span', { class: 'badge product-chip' }, ['◆ ' + (Store.get('products', d.productId)?.name || '?')]) : null,
-        el('span', { class: 'badge ' + statusColor }, [d.status || 'proposed']),
+        el('span', { class: 'badge ' + statusColor }, [DECISION_STATUS_LABELS[d.status] || DECISION_STATUS_LABELS.proposed]),
       ]),
       d.context ? el('div', { class: 'decision-section' }, [el('strong', {}, ['Contesto']), el('div', { html: richText(d.context) })]) : null,
       d.decision ? el('div', { class: 'decision-section' }, [el('strong', {}, ['Decisione']), el('div', { html: richText(d.decision) })]) : null,
@@ -54,7 +61,7 @@ const Decisions = {
     const dateI = el('input', { type: 'date', value: d.date || todayISO() });
     const authorI = el('input', { type: 'text', value: d.author || '', placeholder: 'Es. R&D team' });
     const statusI = el('select', {}, ['proposed', 'accepted', 'rejected', 'superseded'].map(s =>
-      el('option', { value: s, selected: d.status === s }, [s])
+      el('option', { value: s, selected: d.status === s }, [DECISION_STATUS_LABELS[s]])
     ));
     const productI = el('select', {}, [
       el('option', { value: '' }, ['—']),

@@ -309,9 +309,9 @@ input:focus, textarea:focus, select:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-soft);
 }
-textarea { resize: vertical; min-height: 80px; }
+textarea { resize: vertical; min-height: 64px; }
 label { font-size: 12px; color: var(--text-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
-.form-row { margin-bottom: 14px; }
+.form-row { margin-bottom: 10px; }
 .form-row-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
 /* Filter bar */
@@ -359,7 +359,7 @@ label { font-size: 12px; color: var(--text-dim); font-weight: 600; text-transfor
   box-shadow: var(--shadow);
 }
 .modal-card h2 {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   font-size: 18px;
   font-weight: 700;
 }
@@ -367,9 +367,13 @@ label { font-size: 12px; color: var(--text-dim); font-weight: 600; text-transfor
   display: flex;
   gap: 8px;
   justify-content: flex-end;
-  margin-top: 18px;
-  padding-top: 14px;
+  position: sticky;
+  bottom: -22px;
+  margin: 14px -22px -22px;
+  padding: 12px 22px;
   border-top: 1px solid var(--border);
+  background: var(--bg-elev);
+  z-index: 1;
 }
 
 /* Toast */

@@ -30,8 +30,8 @@
 | **Persone** | Membri del team con ruolo, cadenza 1:1 automatica, action items, task assegnati, note. Tu compari con un badge "Tu" e sei il destinatario di default dei nuovi task |
 | **Teams** | Gruppi di persone (multi-appartenenza), con colore distintivo. Una persona può stare in più team contemporaneamente |
 | **Prodotti** | Prodotti con nome, descrizione, team e/o persone assegnate. Task / note / decisioni possono essere collegati a un prodotto e aggregati nella sua vista |
-| **Notes** | Appunti rapidi / meeting con tag, ricerca, supporto markdown-lite (**bold**, link, liste). Collegabili a un prodotto |
-| **Decisions** | Log decisioni tecniche ADR-style: contesto / decisione / conseguenze / status (proposed, accepted, rejected, superseded). Collegabili a un prodotto |
+| **Notes** | Appunti rapidi / meeting con tag, filtro per tag e ricerca. Il corpo resta testo semplice. Collegabili a un prodotto |
+| **Decisions** | Log decisioni tecniche ADR-style: contesto / decisione / conseguenze (resi con markdown-lite: **bold**, link, liste) / status (proposed, accepted, rejected, superseded). Collegabili a un prodotto |
 
 ---
 
@@ -43,8 +43,8 @@
 ### Clone & avvio
 
 ```bash
-git clone git@github-personale:davideorsini94/MyManager.git
-cd MyManager
+git clone https://github.com/davideorsini94/my-manager.git
+cd my-manager
 npm start
 ```
 
@@ -88,7 +88,7 @@ Al primo accesso ti viene chiesto **nome e ruolo** — questo crea il tuo profil
 | `n` | Nuovo elemento (in base alla vista) |
 | `/` o `⌘K` / `Ctrl+K` | Ricerca globale |
 | `Esc` | Chiudi finestra modale |
-| `⌘+Enter` / `Ctrl+Enter` | Salva nei form modali |
+| `⌘+Enter` / `Ctrl+Enter` | Salva il task (dal campo titolo) o la nota (dal corpo) |
 
 ### Ricerca globale
 Premi `⌘K` (o `/`) ovunque per cercare in: task, persone, team, prodotti, note, decisioni. Frecce + Enter per aprire.
@@ -102,7 +102,7 @@ Hai **4 reti di sicurezza** sovrapposte:
 1. **`data/state.json`** — fonte di verità su disco (server attivo)
 2. **`data/backups/state-<timestamp>.json`** — snapshot automatico ad ogni save, ultimi 30 conservati. Sfogliabili e ripristinabili dal pulsante **Backup** in sidebar
 3. **localStorage** — copia parallela scritta ad ogni save (sopravvive anche se il file viene corrotto)
-4. **Export JSON** — backup manuale scaricabile (pulsante **Export** in sidebar)
+4. **Export JSON** — backup manuale scaricabile (pulsante **Export** in sidebar), ricaricabile con **Import**
 
 Le scritture sono **atomiche** (tmp + rename) e **debounced** (300ms) per evitare disk thrash. Su `beforeunload` viene fatto flush tramite `sendBeacon`.
 
@@ -121,7 +121,7 @@ In fondo alla sidebar:
 ## Struttura del progetto
 
 ```
-MyManager/
+my-manager/
 ├── index.html              # Entry point, layout sidebar + main
 ├── styles.css              # Tema scuro/chiaro, componenti
 ├── server.js               # Server Node zero-dep (http + fs)
